@@ -1,4 +1,9 @@
 /*
+Comentado por http://otroblogdetecnologias.blogspot.com
+
+Este es un ejemplo de pool de threads o hilos que devuelven valores.
+Se lanzan los hilos y se esperan resultados en forma sincronizada cuando terminan todos.
+Los resultados se recolectan en un array.
  */
 package multihilos;
 

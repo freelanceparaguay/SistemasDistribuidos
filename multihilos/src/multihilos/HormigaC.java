@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package multihilos;
 
 /**
  *
- * @author usuario
+ * La clase implementa métodos de Callable, esto permite devolver valores encapsulados
+ * en un objeto.
  */
 import java.util.*;
 import java.util.concurrent.*;
@@ -22,7 +18,7 @@ import java.util.concurrent.*;
 
     public Integer call() {
         System.out.println("hormiga="+numero+ "-> ejecutando ");
-        System.out.println("Enviando resultados-> desde hormiga="+numero);        
-      return Integer.valueOf(word.length());
+        System.out.println("Enviando resultados-> desde hormiga="+numero);
+        return Integer.valueOf(word.length());//devuelve un valor entero
     }//call    
   }//Hormiga  

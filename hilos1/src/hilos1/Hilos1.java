@@ -1,6 +1,12 @@
 /*
  * Ejemplo de multihilos
- */
+ * Comentado por http://otroblogdetecnologias.blogspot.com
+Desde el proceso principal, se crea un objeto de la clase Tarea, la misma implementa Runable
+y luego se utiliza un pool de threads instanciado a partir de la clase 
+Executor.
+Por medio de un for se envían 5 hilos los cuales relian funciones ficticias.
+En este ejemplo no se devuelven resultados.
+*/
 package hilos1;
 
 import java.util.concurrent.ExecutorService;
