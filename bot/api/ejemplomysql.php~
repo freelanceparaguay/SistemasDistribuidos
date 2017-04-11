@@ -1,0 +1,60 @@
+<?php
+//try{ 
+// $host="localhost"; 
+// $username="apache";
+// $password="miclavesupersecreta";
+// $database="basedatosbot";
+
+
+
+	
+//$mbd = new PDO('mysql:host=localhost;dbname=basedatosbot', $username, $password);
+
+//} catch (PDOException $e) {
+//    print "¡Error!: " . $e->getMessage() . "<br/>";
+//    die();
+//}
+
+//try{
+ $host="localhost"; 
+ $username="apache";
+ $password="miclavesupersecreta";
+ $database="basedatosbot";
+ $port=3306;
+ 
+ $mysqli = new mysqli($host, $username, $password, $database, $port);
+ 
+  if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
+      echo 'no se encuentra el driver mysqli :(';
+ } else {
+      echo 'se consiguio la conexión';
+ }
+ 
+ $res = $mysqli->query("SELECT * FROM bots");
+  echo "<br> res->".$res->num_rows;
+ 
+ 
+ $res = $mysqli->query("SELECT * FROM bots WHERE botid=(?)");
+  echo "<br> res->".$res->num_rows;
+ 	
+
+ 
+ 
+//}catch (Exception $e) {
+//  echo $e->errorMessage();
+//} 
+
+/*
+
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+*/
+
+ //$connection = new mysqli($host, $username, $password, $database); 
+ // if($connection->connect_erno){
+ // 	echo "falloooo";
+ // } 
+// $connection = mysqli_connect('localhost', 'username', 'password', 'database');
+ 
+?>
